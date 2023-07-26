@@ -9,43 +9,65 @@ import SwiftUI
 
 struct AddThreadView: View {
     
-    @State var text: String = ""
+    @State var viewModel = AddThreadViewModel()
+    @State var inFocus: Field?
     
     var body: some View {
         NavigationStack {
-            VStack {
-                List {
-                    VStack {
-                        TextEditor(text: $text)
-                            .background(Color.orange)
+            VStack(spacing: 0) {
+                Divider()
+                ScrollView {
+                    VStack(alignment: .leading) {
+                        ForEach(viewModel.threads, id: \.self){ thread in
+                            NewThreadItem(id: thread.id, inFocus: $inFocus) {
+                                withAnimation {
+                                    if viewModel.threads.count == 1 {
+                                        viewModel.threads[0].text = ""
+                                    } else {
+                                        viewModel.threads.removeAll { item in
+                                            thread.id == item.id
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
+                        Button {
+                            viewModel.threads.append(NewThreadModel())
+                        } label: {
+                            HStack(spacing: 16) {
+                                Image(.avatar)
+                                    .resizable()
+                                    .frame(width: 24, height: 24)
+                                    .foregroundStyle(.gray700)
+                                    .clipShape(Circle())
+                                    .opacity(0.5)
+                                Text("Add to thred")
+                                    .font(.system(size: 16))
+                                    .foregroundStyle(.gray500)
+                            }
+                            .padding(.leading, 5)
+                        }
+
                         
                     }
-                    .listRowSeparator(.hidden)
+                    .padding(16)
                 }
                 .listStyle(PlainListStyle())
                 
                 Spacer()
                 HStack {
-                    Menu("Your followers can reply") {
-                        Button {
-                            
-                        } label: {
-                            Text("Your followers")
+                    Menu("\(viewModel.whoCanReply.rawValue) can reply") {
+                        ForEach(CanReplyThreadType.allCases, id:\.rawValue) { type in
+                            Button {
+                                viewModel.whoCanReply = type
+                            } label: {
+                                Text(type.rawValue)
+                            }
                         }
-                        Button {
-                            
-                        } label: {
-                            Text("Profiles you follow")
-                        }
-                        Button {
-                            
-                        } label: {
-                            Text("Mentioned only")
-                        }
-
                     }
-                    .font(.system(size: 14, weight: .medium))
-                    .tint(.gray)
+                    .font(.system(size: 14))
+                    .foregroundStyle(.gray700)
                     .padding()
                     
                     Spacer()
@@ -58,7 +80,7 @@ struct AddThreadView: View {
                             .font(.system(size: 16, weight: .bold))
                             .padding()
                     }
-
+                    
                 }
             }
             .navigationTitle("Add thread")
