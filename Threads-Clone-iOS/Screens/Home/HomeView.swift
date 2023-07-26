@@ -8,20 +8,34 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State var viewModel = HomeViewModel()
+    
     var body: some View {
         NavigationStack {
             List {
-                VStack {
-                    ForEach(Range(0...20)) { index in
-                        Rectangle()
-                            .frame(height: 100)
+                ForEach(viewModel.threads, id: \.self) { thread in
+                    NavigationLink(value: UUID().uuidString) {
+                        ThreadItem(viewModel: ThreadViewModel(thread: thread))
                     }
+                    .buttonStyle(PlainButtonStyle())
+                    .listRowSeparator(.hidden)
+                    .listRowInsets(EdgeInsets())
                 }
-                .listRowSeparator(.hidden)
             }
             .listStyle(PlainListStyle())
-            .navigationTitle("Home")
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Image(.logoHome)
+                        .resizable()
+                        .frame(width: 28, height: 32)
+                }
+            }
+            .toolbarTitleDisplayMode(.inline)
+            .navigationDestination(for: String.self) { value in
+                ThreadDetailView()
+            }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

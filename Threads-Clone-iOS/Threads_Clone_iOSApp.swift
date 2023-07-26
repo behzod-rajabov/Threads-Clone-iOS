@@ -10,10 +10,11 @@ import SwiftData
 
 @main
 struct Threads_Clone_iOSApp: App {
-
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .tint(.foreground)
         }
         .modelContainer(for: Item.self)
     }

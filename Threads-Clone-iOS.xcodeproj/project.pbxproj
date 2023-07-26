@@ -18,6 +18,13 @@
 		E8E50B172A6AFD75009E0BE5 /* AddThreadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E50B162A6AFD75009E0BE5 /* AddThreadView.swift */; };
 		E8E50B192A6AFD97009E0BE5 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E50B182A6AFD97009E0BE5 /* ActivityView.swift */; };
 		E8E50B1B2A6AFDBB009E0BE5 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E50B1A2A6AFDBB009E0BE5 /* ProfileView.swift */; };
+		E8E50B1D2A6D3976009E0BE5 /* NewThreadItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E50B1C2A6D3976009E0BE5 /* NewThreadItem.swift */; };
+		E8E50B1F2A6D3A0A009E0BE5 /* AddThreadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E50B1E2A6D3A0A009E0BE5 /* AddThreadViewModel.swift */; };
+		E8E50B212A6D6AEA009E0BE5 /* ThreadItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E50B202A6D6AEA009E0BE5 /* ThreadItem.swift */; };
+		E8E50B242A6D8D6A009E0BE5 /* ThreadDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E50B232A6D8D6A009E0BE5 /* ThreadDetailView.swift */; };
+		E8E50B262A6D9425009E0BE5 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E50B252A6D9425009E0BE5 /* MainViewModel.swift */; };
+		E8E50B282A6D9BD8009E0BE5 /* ThreadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E50B272A6D9BD8009E0BE5 /* ThreadViewModel.swift */; };
+		E8E50B2A2A6DA9AE009E0BE5 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E50B292A6DA9AE009E0BE5 /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +42,13 @@
 		E8E50B162A6AFD75009E0BE5 /* AddThreadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThreadView.swift; sourceTree = "<group>"; };
 		E8E50B182A6AFD97009E0BE5 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		E8E50B1A2A6AFDBB009E0BE5 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		E8E50B1C2A6D3976009E0BE5 /* NewThreadItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewThreadItem.swift; sourceTree = "<group>"; };
+		E8E50B1E2A6D3A0A009E0BE5 /* AddThreadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThreadViewModel.swift; sourceTree = "<group>"; };
+		E8E50B202A6D6AEA009E0BE5 /* ThreadItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadItem.swift; sourceTree = "<group>"; };
+		E8E50B232A6D8D6A009E0BE5 /* ThreadDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadDetailView.swift; sourceTree = "<group>"; };
+		E8E50B252A6D9425009E0BE5 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		E8E50B272A6D9BD8009E0BE5 /* ThreadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadViewModel.swift; sourceTree = "<group>"; };
+		E8E50B292A6DA9AE009E0BE5 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +104,7 @@
 		E8E50B092A6AFC67009E0BE5 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				E8E50B222A6D8D58009E0BE5 /* Thread */,
 				E8E50B0A2A6AFC7E009E0BE5 /* Home */,
 				E8E50B0B2A6AFC8E009E0BE5 /* Search */,
 				E8E50B0C2A6AFC9D009E0BE5 /* AddThread */,
@@ -104,6 +119,8 @@
 			isa = PBXGroup;
 			children = (
 				E8E50B122A6AFD40009E0BE5 /* HomeView.swift */,
+				E8E50B202A6D6AEA009E0BE5 /* ThreadItem.swift */,
+				E8E50B292A6DA9AE009E0BE5 /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -120,6 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				E8E50B162A6AFD75009E0BE5 /* AddThreadView.swift */,
+				E8E50B1C2A6D3976009E0BE5 /* NewThreadItem.swift */,
+				E8E50B1E2A6D3A0A009E0BE5 /* AddThreadViewModel.swift */,
 			);
 			path = AddThread;
 			sourceTree = "<group>";
@@ -144,8 +163,18 @@
 			isa = PBXGroup;
 			children = (
 				E8E50B102A6AFD0A009E0BE5 /* MainView.swift */,
+				E8E50B252A6D9425009E0BE5 /* MainViewModel.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		E8E50B222A6D8D58009E0BE5 /* Thread */ = {
+			isa = PBXGroup;
+			children = (
+				E8E50B232A6D8D6A009E0BE5 /* ThreadDetailView.swift */,
+				E8E50B272A6D9BD8009E0BE5 /* ThreadViewModel.swift */,
+			);
+			path = Thread;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,11 +250,18 @@
 				E8E50B172A6AFD75009E0BE5 /* AddThreadView.swift in Sources */,
 				E8E50B1B2A6AFDBB009E0BE5 /* ProfileView.swift in Sources */,
 				E8E50AFA2A6AFB8A009E0BE5 /* ContentView.swift in Sources */,
+				E8E50B2A2A6DA9AE009E0BE5 /* HomeViewModel.swift in Sources */,
 				E8E50B112A6AFD0A009E0BE5 /* MainView.swift in Sources */,
+				E8E50B1F2A6D3A0A009E0BE5 /* AddThreadViewModel.swift in Sources */,
 				E8E50B012A6AFB8D009E0BE5 /* Item.swift in Sources */,
+				E8E50B242A6D8D6A009E0BE5 /* ThreadDetailView.swift in Sources */,
+				E8E50B262A6D9425009E0BE5 /* MainViewModel.swift in Sources */,
 				E8E50B132A6AFD40009E0BE5 /* HomeView.swift in Sources */,
 				E8E50B192A6AFD97009E0BE5 /* ActivityView.swift in Sources */,
+				E8E50B1D2A6D3976009E0BE5 /* NewThreadItem.swift in Sources */,
+				E8E50B282A6D9BD8009E0BE5 /* ThreadViewModel.swift in Sources */,
 				E8E50B152A6AFD52009E0BE5 /* SearchView.swift in Sources */,
+				E8E50B212A6D6AEA009E0BE5 /* ThreadItem.swift in Sources */,
 				E8E50AF82A6AFB8A009E0BE5 /* Threads_Clone_iOSApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

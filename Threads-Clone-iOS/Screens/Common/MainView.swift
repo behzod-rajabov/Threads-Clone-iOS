@@ -8,13 +8,11 @@
 import SwiftUI
 
 struct MainView: View {
-    
-    @State var selectedTab: Tab = .home
-    @State var showNewThreadView: Bool = false
+    @State var viewModel = MainViewModel()
     
     var body: some View {
         VStack(spacing: 0) {
-            TabView(selection: $selectedTab) {
+            TabView(selection: $viewModel.selectedTab) {
                 HomeView()
                     .tag(Tab.home)
                 SearchView()
@@ -30,32 +28,32 @@ struct MainView: View {
             Spacer(minLength: 0)
             HStack(spacing: 0) {
                 VStack {
-                    Image(selectedTab == .home ? .homeTabFill : .homeTab)
+                    Image(viewModel.selectedTab == .home ? .homeTabFill : .homeTab)
                         .resizable()
                         .renderingMode(.template)
                         .frame(width: 32, height: 32)
-                        .foregroundStyle(selectedTab == .home ? .foreground : .gray700)
+                        .foregroundStyle(viewModel.selectedTab == .home ? .foreground : .gray700)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color.background)
                 .onTapGesture {
                     withAnimation(.easeIn(duration: 0.1)) {
-                        selectedTab = .home
+                        viewModel.selectedTab = .home
                     }
                 }
                 
                 VStack {
-                    Image(selectedTab == .search ? .searchTabFill : .searchTab)
+                    Image(viewModel.selectedTab == .search ? .searchTabFill : .searchTab)
                         .resizable()
                         .renderingMode(.template)
                         .frame(width: 32, height: 32)
-                        .foregroundStyle(selectedTab == .search ? .foreground : .gray700)
+                        .foregroundStyle(viewModel.selectedTab == .search ? .foreground : .gray700)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color.background)
                 .onTapGesture {
                     withAnimation(.easeIn(duration: 0.1)) {
-                        selectedTab = .search
+                        viewModel.selectedTab = .search
                     }
                 }
                 
@@ -69,57 +67,59 @@ struct MainView: View {
                 .background(Color.background)
                 .onTapGesture {
                     withAnimation(.easeIn(duration: 0.1)) {
-                        showNewThreadView.toggle()
+                        viewModel.showNewThreadView.toggle()
+                    }
+                }
+                
+                VStack(spacing: 0) {
+                    Image(viewModel.selectedTab == .activity ? .activityTabFill : .activityTab)
+                        .resizable()
+                        .renderingMode(.template)
+                        .frame(width: 32, height: 32)
+                        .foregroundStyle(viewModel.selectedTab == .activity ? .foreground : .gray700)
+                    // badge
+                    Circle()
+                        .frame(width: 5, height: 5)
+                        .foregroundStyle(.red)
+                    
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                // for badge
+                .padding(.top, 5)
+                .background(Color.background)
+                .onTapGesture {
+                    withAnimation(.easeIn(duration: 0.1)) {
+                        viewModel.selectedTab = .activity
                     }
                 }
                 
                 VStack {
-                    Image(selectedTab == .activity ? .activityTabFill : .activityTab)
+                    Image(viewModel.selectedTab == .profile ? .profileTabFill : .profileTab)
                         .resizable()
                         .renderingMode(.template)
                         .frame(width: 32, height: 32)
-                        .foregroundStyle(selectedTab == .activity ? .foreground : .gray700)
+                        .foregroundStyle(viewModel.selectedTab == .profile ? .foreground : .gray700)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color.background)
                 .onTapGesture {
                     withAnimation(.easeIn(duration: 0.1)) {
-                        selectedTab = .activity
-                    }
-                }
-                
-                VStack {
-                    Image(selectedTab == .profile ? .profileTabFill : .profileTab)
-                        .resizable()
-                        .renderingMode(.template)
-                        .frame(width: 32, height: 32)
-                        .foregroundStyle(selectedTab == .profile ? .foreground : .gray700)
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color.background)
-                .onTapGesture {
-                    withAnimation(.easeIn(duration: 0.1)) {
-                        selectedTab = .profile
+                        viewModel.selectedTab = .profile
                     }
                 }
             }
-            .frame(height: 60)
+            .frame(height: 56)
             .background(Color.background)
             
         }
-        .sheet(isPresented: $showNewThreadView, content: {
+        //.tint(.foreground)
+        .sheet(isPresented: $viewModel.showNewThreadView, content: {
             AddThreadView()
         })
     }
 }
 
-enum Tab {
-    case home
-    case search
-    case newThread
-    case activity
-    case profile
-}
+
 
 #Preview {
     MainView()
